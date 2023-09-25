@@ -1,46 +1,31 @@
-'''Implement a class called BankAccount that represents a                bank account. the class should have private 
-attributes for account number, account holder name, and               account balance. Include methods to
-deposit money, withdraw money, and display the account               balance. Ensure that the account balance 
-cannot be accessed directly from outside the class. Write a          program to create an instance of the
-BankAccount class and test the deposit and withdrawal      functionality.'''
+"""
+implement a function called sort_students that takes a list of student objects as input and
+sorts the list based on their CGPA(Cumulative Grade Point Average) in descending order.
+Each studnet object has the following attirbutes: name(string),and cgpa(float). Test the function with the dffferent input lists of students
+"""
 
+class Student:
+    def __init__(self, name, roll_number, cgpa):
+        self.name = name
+        self.roll_number = roll_number
+        self.cgpa = cgpa
 
-class BankAccount:
-    def __init__(self, account_number, account_holder_name, initial_balance):
-        self._account_number = account_number
-        self._account_holder_name = account_holder_name
-        self._account_balance = initial_balance
+def sort_students(student_list):
+    # Sort the list of student objects in descending order of CGPA
+    sorted_students = sorted(student_list, key=lambda student: student.cgpa, reverse=True)
+    return sorted_students
 
-    def deposit(self, amount):
-        if amount > 0:
-            self._account_balance += amount
-            print(f"Deposited ${amount}. New balance: ${self._account_balance}")
-        else:
-            print("Invalid deposit amount. Please enter a positive amount.")
+# Example usage:
+students = [
+    Student("Hari", "A123", 7.8),
+    Student("Srikanth", "A124", 8.9),
+    Student("Saumya", "A125", 9.1),
+    Student("David", "A126", 9.9),
+]
 
-    def withdraw(self, amount):
-        if 0 < amount <= self._account_balance:
-            self._account_balance -= amount
-            print(f"Withdrew ${amount}. New balance: ${self._account_balance}")
-        elif amount > self._account_balance:
-            print("Insufficient funds.")
-        else:
-            print("Invalid withdrawal amount. Please enter a positive amount.")
+sorted_students = sort_students(students)
 
-    def display_balance(self):
-        print(f"Account balance for {self._account_holder_name}: ${self._account_balance}")
+# Print the sorted list of students
+for student in sorted_students:
+    print("Name: {}, Roll Number: {}, CGPA: {}".format(student.name, student.roll_number, student.cgpa))
 
-# Testing the BankAccount class
-if __name__ == "__main__":
-    # Creating an instance of BankAccount
-    account = BankAccount("12345", "Kaviya", 1000)
-
-    # Testing deposit and withdrawal
-    account.display_balance()
-    account.deposit(500)
-    account.withdraw(200)
-    account.withdraw(1500)
-    account.display_balance()
-
-
-                                                  

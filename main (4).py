@@ -1,27 +1,23 @@
-'''Implement a class called Player that represents a cricket player.    The Player class should have_a
-method called play() which prints "The player ts playing cricket.    Derive two classes, Batsman and
-Bowler, from the Player class. Override the play() method in eachderived class to print_ "The batsman
-is batting" and "The bowler is bowling", respectively. Write a      progran to create objects of.both the
-Batsman and Bowler classes and call the play() method for each
-object.'''
+"""
+write a function called linear_search_product that takes the list of products and a target product
+name is input. the function should perform a linear search to find the target product in the list and 
+return a list of indices of all occurrences of the product if found, or an empty list if the product is not
+found.
+"""
+  
+def linearsearchproduct(product_list, target_product):
+  
+    indices = []
+  
+    for index, product in enumerate(product_list):
+        if product == target_product:
+            indices.append(index) 
 
-
-class Player:
-    def play(self):
-        print("The player is playing cricket")
-
-class Batsman(Player):
-    def play(self):
-        print("The batsman is batting")
-
-class Bowler(Player):
-    def play(self):
-        print("The bowler is bowling")
-
-# Create objects of Batsman and Bowler classes
-batsman = Batsman()
-bowler = Bowler()
-
-# Call the play() method for each object
-batsman.play()
-bowler.play()
+    return indices 
+  
+# Example usage:
+products = ["shoes", "boot", "loafer", "shoes", "sandal", "shoes"]
+target = "shoes"
+target2 = "apple"
+result = linearsearchproduct(products, target)
+print(result)
