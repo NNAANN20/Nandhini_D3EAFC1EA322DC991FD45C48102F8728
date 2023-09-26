@@ -1,21 +1,20 @@
-# Python program to check if year is a leap year or not
+programmed to cycle through four different images to create the illusion of walking, and this can happen regardless of what else is happening around it.
 
-year = 2000
+'''
+Objects
+'''
 
-# To get year (integer input) from the user
-# year = int(input("Enter a year: "))
 
-# divided by 100 means century year (ending with 00)
-# century year divided by 400 is leap year
-if (year % 400 == 0) and (year % 100 == 0):
-    print("{0} is a leap year".format(year))
+class Player(pygame.sprite.Sprite):
+    """
+    Spawn a player
+    """
 
-# not divided by 100 means not a century year
-# year divided by 4 is a leap year
-elif (year % 4 ==0) and (year % 100 != 0):
-    print("{0} is a leap year".format(year))
-
-# if not divided by both 400 (century year) and 4 (not century year)
-# year is not leap year
-else:
-    print("{0} is not a leap year".format(year))
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.images = []
+        for i in range(1, 5):
+            img = pygame.image.load(os.path.join('images', 'hero' + str(i) + '.png')).convert()
+            self.images.append(img)
+            self.image = self.images[0]
+            self.rect = self.image.get_rect()
